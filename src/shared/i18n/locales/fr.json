@@ -1,0 +1,222 @@
+{
+  "app": {
+    "name": "Académie"
+  },
+  "nav": {
+    "dashboard": "Tableau de bord",
+    "teams": "Équipes",
+    "players": "Joueurs",
+    "coaches": "Entraîneurs",
+    "sessions": "Séances",
+    "planning": "Planning",
+    "profile": "Mon profil"
+  },
+  "auth": {
+    "login": {
+      "title": "Connexion",
+      "subtitle": "Connectez-vous pour accéder à votre espace",
+      "username": "Nom d'utilisateur",
+      "password": "Mot de passe",
+      "submit": "Se connecter",
+      "submitting": "Connexion en cours...",
+      "devHint": "Compte de test (dev) : admin / admin"
+    },
+    "logout": "Se déconnecter"
+  },
+  "common": {
+    "loading": "Chargement...",
+    "retry": "Réessayer",
+    "cancel": "Annuler",
+    "save": "Enregistrer",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "back": "Retour",
+    "noData": "Aucune donnée à afficher",
+    "search": "Rechercher",
+    "pagination": {
+      "label": "Pagination",
+      "summary": "Page {{page}} / {{totalPages}}",
+      "first": "Première page",
+      "previous": "Page précédente",
+      "next": "Page suivante",
+      "last": "Dernière page"
+    }
+  },
+  "errors": {
+    "generic": "Une erreur est survenue. Veuillez réessayer.",
+    "network": "Impossible de joindre le serveur. Vérifiez votre connexion.",
+    "unauthorized": "Identifiants invalides.",
+    "forbidden": "Vous n'avez pas les droits nécessaires pour accéder à cette ressource.",
+    "notFound": "Ressource introuvable.",
+    "validation": "Le formulaire contient des erreurs.",
+    "server": "Erreur serveur. Veuillez réessayer plus tard.",
+    "traceIdRef": "Référence : {{traceId}}"
+  },
+  "pages": {
+    "notFound": {
+      "title": "Page introuvable",
+      "description": "La page que vous recherchez n'existe pas.",
+      "backHome": "Retour à l'accueil"
+    },
+    "forbidden": {
+      "title": "Accès refusé",
+      "description": "Vous n'avez pas les droits nécessaires pour accéder à cette page.",
+      "backHome": "Retour à l'accueil"
+    },
+    "dashboard": {
+      "title": "Tableau de bord",
+      "welcome": "Bienvenue, {{name}}"
+    }
+  },
+  "players": {
+    "title": "Joueurs",
+    "new": "Nouveau joueur",
+    "create": "Créer un joueur",
+    "edit": "Modifier le joueur",
+    "delete": "Supprimer le joueur",
+    "myProfile": "Mon profil",
+    "noTeam": "Non affecté à une équipe",
+    "created": "Joueur {{name}} créé.",
+    "updated": "Joueur mis à jour.",
+    "deleted": "Joueur supprimé.",
+    "photoUpdated": "Photo mise à jour.",
+    "fields": {
+      "firstName": "Prénom",
+      "lastName": "Nom",
+      "category": "Catégorie",
+      "heightCm": "Taille (cm)",
+      "weightKg": "Poids (kg)",
+      "photo": "Photo",
+      "team": "Équipe"
+    },
+    "filters": {
+      "search": "Rechercher un joueur",
+      "category": "Catégorie",
+      "team": "Équipe",
+      "allCategories": "Toutes les catégories",
+      "allTeams": "Toutes les équipes"
+    },
+    "empty": {
+      "title": "Aucun joueur",
+      "description": "Commencez par créer le premier joueur."
+    },
+    "deleteConfirm": {
+      "title": "Supprimer ce joueur ?",
+      "description": "Cette action est irréversible."
+    },
+    "detail": {
+      "backToList": "Retour à la liste",
+      "notFound": "Joueur introuvable",
+      "physicalInfo": "Informations physiques",
+      "height": "Taille",
+      "weight": "Poids",
+      "notProvided": "Non renseigné",
+      "createdAt": "Créé le {{date}}",
+      "updatedAt": "Modifié le {{date}}",
+      "viewTeam": "Voir l'équipe"
+    },
+    "photo": {
+      "change": "Changer la photo",
+      "uploading": "Envoi en cours...",
+      "alt": "Photo de {{name}}"
+    },
+    "form": {
+      "createTitle": "Nouveau joueur",
+      "editTitle": "Modifier le joueur",
+      "submitCreate": "Créer le joueur",
+      "submitEdit": "Enregistrer",
+      "submitting": "Enregistrement...",
+      "heightSuffix": "cm",
+      "weightSuffix": "kg"
+    },
+    "me": {
+      "noTeam": "Vous n'êtes pas encore affecté à une équipe."
+    },
+    "errors": {
+      "create": "Impossible de créer le joueur.",
+      "update": "Impossible de modifier le joueur.",
+      "delete": "Impossible de supprimer le joueur.",
+      "photoUpload": "Impossible d'enregistrer la photo.",
+      "photoTooBig": "Photo trop volumineuse (5 Mo max).",
+      "photoInvalidType": "Format non supporté (JPG, PNG, WebP)."
+    }
+  },
+  "coaches": {
+    "title": "Coachs",
+    "new": "Nouveau coach",
+    "create": "Créer un coach",
+    "edit": "Modifier le coach",
+    "delete": "Supprimer le coach",
+    "categories": "Catégories habilitées",
+    "categoriesUpdated": "Catégories mises à jour.",
+    "created": "Coach {{name}} créé.",
+    "updated": "Coach mis à jour.",
+    "deleted": "Coach supprimé.",
+    "photoUpdated": "Photo mise à jour.",
+    "fields": {
+      "firstName": "Prénom",
+      "lastName": "Nom",
+      "diploma": "Diplôme",
+      "categories": "Catégories habilitées"
+    },
+    "filters": {
+      "search": "Rechercher un coach",
+      "category": "Catégorie",
+      "allCategories": "Toutes les catégories"
+    },
+    "empty": {
+      "title": "Aucun coach",
+      "description": "Commencez par créer le premier coach."
+    },
+    "deleteConfirm": {
+      "title": "Supprimer ce coach ?",
+      "description": "Cette action est irréversible.",
+      "viewTeams": "Voir les équipes"
+    },
+    "detail": {
+      "backToList": "Retour à la liste",
+      "notFound": "Coach introuvable",
+      "diploma": "Diplôme",
+      "notProvided": "Non renseigné",
+      "createdAt": "Créé le {{date}}",
+      "updatedAt": "Modifié le {{date}}"
+    },
+    "photo": {
+      "change": "Changer la photo",
+      "uploading": "Envoi en cours...",
+      "alt": "Photo de {{name}}"
+    },
+    "form": {
+      "createTitle": "Nouveau coach",
+      "editTitle": "Modifier le coach",
+      "submitCreate": "Créer le coach",
+      "submitEdit": "Enregistrer",
+      "submitting": "Enregistrement..."
+    },
+    "categoriesEditor": {
+      "title": "Catégories habilitées",
+      "description": "Sélectionnez les catégories que ce coach peut encadrer.",
+      "save": "Enregistrer les catégories",
+      "saving": "Enregistrement...",
+      "atLeastOne": "Sélectionnez au moins une catégorie."
+    },
+    "errors": {
+      "create": "Impossible de créer le coach.",
+      "update": "Impossible de modifier le coach.",
+      "delete": "Impossible de supprimer le coach.",
+      "categoriesUpdate": "Impossible de mettre à jour les catégories.",
+      "categoryInUse": "Cette catégorie est encore utilisée par une équipe.",
+      "photoUpload": "Impossible d'envoyer la photo.",
+      "photoInvalidType": "Format non supporté (JPG, PNG, WebP).",
+      "photoTooBig": "Photo trop volumineuse (5 Mo max).",
+      "hasTeams": "Ce coach gère encore des équipes. Réaffectez-les avant de le supprimer."
+    }
+  },
+  "apiErrors": {
+    "PLAYER_NOT_FOUND": "Joueur introuvable.",
+    "COACH_NOT_FOUND": "Coach introuvable.",
+    "COACH_HAS_TEAMS": "Ce coach gère encore des équipes.",
+    "COACH_CATEGORY_IN_USE": "Catégorie utilisée par une équipe existante.",
+    "VALIDATION_FAILED": "Données invalides."
+  }
+}
