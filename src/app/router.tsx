@@ -15,6 +15,11 @@ import { CoachesListPage } from '@/features/coaches/pages/CoachesListPage'
 import { CoachDetailPage } from '@/features/coaches/pages/CoachDetailPage'
 import { CoachCreatePage } from '@/features/coaches/pages/CoachCreatePage'
 import { CoachEditPage } from '@/features/coaches/pages/CoachEditPage'
+import { TeamsListPage } from '@/features/teams/pages/TeamsListPage'
+import { TeamDetailPage } from '@/features/teams/pages/TeamDetailPage'
+import { TeamCreatePage } from '@/features/teams/pages/TeamCreatePage'
+import { TeamEditPage } from '@/features/teams/pages/TeamEditPage'
+import { MyTeamPage } from '@/features/teams/pages/MyTeamPage'
 
 export const router = createBrowserRouter([
   {
@@ -35,8 +40,8 @@ export const router = createBrowserRouter([
           {
             element: <RoleRoute roles={['ADMIN', 'COACH']} />,
             children: [
-              { path: 'teams', element: <div>Liste des équipes (étape 10)</div> },
-              { path: 'teams/:teamId', element: <div>Détail équipe (étape 10)</div> },
+              { path: 'teams', element: <TeamsListPage /> },
+              { path: 'teams/:id', element: <TeamDetailPage /> },
               { path: 'players', element: <PlayersListPage /> },
               { path: 'players/:id', element: <PlayerDetailPage /> },
               { path: 'coaches', element: <CoachesListPage /> },
@@ -50,11 +55,16 @@ export const router = createBrowserRouter([
               { path: 'players/:id/edit', element: <PlayerEditPage /> },
               { path: 'coaches/new', element: <CoachCreatePage /> },
               { path: 'coaches/:id/edit', element: <CoachEditPage /> },
+              { path: 'teams/new', element: <TeamCreatePage /> },
+              { path: 'teams/:id/edit', element: <TeamEditPage /> },
             ],
           },
           {
             element: <RoleRoute roles={['PLAYER']} />,
-            children: [{ path: 'me', element: <MyProfilePage /> }],
+            children: [
+              { path: 'me', element: <MyProfilePage /> },
+              { path: 'me/team', element: <MyTeamPage /> },
+            ],
           },
           { path: 'planning', element: <div>Planning (étape 10)</div> },
           { path: 'profile', element: <div>Mon profil (étape 10)</div> },

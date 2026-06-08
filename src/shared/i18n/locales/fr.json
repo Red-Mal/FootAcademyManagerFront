@@ -212,11 +212,84 @@
       "hasTeams": "Ce coach gère encore des équipes. Réaffectez-les avant de le supprimer."
     }
   },
+  "teams": {
+    "title": "Équipes",
+    "new": "Nouvelle équipe",
+    "create": "Créer une équipe",
+    "edit": "Modifier l'équipe",
+    "delete": "Supprimer l'équipe",
+    "roster": "Effectif",
+    "rosterEmpty": "Aucun joueur dans cette équipe.",
+    "addPlayer": "Ajouter un joueur",
+    "removePlayer": "Retirer",
+    "changeCoach": "Changer le coach",
+    "changeCoachDescription": "Sélectionnez un nouveau coach habilité pour la catégorie de cette équipe.",
+    "noEligibleCoach": "Aucun coach n'est habilité pour la catégorie de cette équipe.",
+    "created": "Équipe {{name}} créée.",
+    "updated": "Équipe mise à jour.",
+    "deleted": "Équipe supprimée.",
+    "coachChanged": "Coach de l'équipe mis à jour.",
+    "playerAdded": "Joueur ajouté à l'équipe.",
+    "playerRemoved": "Joueur retiré de l'équipe.",
+    "fields": {
+      "name": "Nom",
+      "category": "Catégorie",
+      "coach": "Coach"
+    },
+    "filters": {
+      "search": "Rechercher une équipe",
+      "allCategories": "Toutes les catégories",
+      "allCoaches": "Tous les coachs"
+    },
+    "empty": {
+      "title": "Aucune équipe",
+      "description": "Commencez par créer la première équipe."
+    },
+    "deleteConfirm": {
+      "title": "Supprimer cette équipe ?",
+      "description": "Cette action est irréversible.",
+      "playersDetached_one": "{{count}} joueur sera détaché de l'équipe.",
+      "playersDetached_other": "{{count}} joueurs seront détachés de l'équipe."
+    },
+    "detail": {
+      "backToList": "Retour à la liste",
+      "notFound": "Équipe introuvable"
+    },
+    "form": {
+      "createTitle": "Nouvelle équipe",
+      "editTitle": "Modifier l'équipe",
+      "submitCreate": "Créer l'équipe",
+      "submitEdit": "Enregistrer",
+      "submitting": "Enregistrement...",
+      "selectCoach": "Sélectionner un coach",
+      "noEligibleCoach": "Aucun coach n'est habilité pour cette catégorie."
+    },
+    "addPlayerDialog": {
+      "search": "Rechercher un joueur",
+      "empty": "Aucun joueur sans équipe dans cette catégorie."
+    },
+    "me": {
+      "title": "Mon équipe",
+      "noTeam": "Vous n'êtes pas affecté à une équipe."
+    },
+    "errors": {
+      "create": "Impossible de créer l'équipe.",
+      "update": "Impossible de modifier l'équipe.",
+      "delete": "Impossible de supprimer l'équipe.",
+      "addPlayer": "Impossible d'ajouter ce joueur à l'équipe.",
+      "removePlayer": "Impossible de retirer ce joueur de l'équipe.",
+      "changeCoach": "Impossible de changer le coach de l'équipe."
+    }
+  },
   "apiErrors": {
     "PLAYER_NOT_FOUND": "Joueur introuvable.",
     "COACH_NOT_FOUND": "Coach introuvable.",
     "COACH_HAS_TEAMS": "Ce coach gère encore des équipes.",
     "COACH_CATEGORY_IN_USE": "Catégorie utilisée par une équipe existante.",
+    "COACH_CATEGORY_MISMATCH": "Ce coach n'est pas habilité pour la catégorie de l'équipe.",
+    "PLAYER_CATEGORY_MISMATCH": "Ce joueur n'appartient pas à la catégorie de l'équipe.",
+    "PLAYER_NOT_IN_TEAM": "Ce joueur ne fait pas partie de cette équipe.",
+    "TEAM_NOT_FOUND": "Équipe introuvable.",
     "VALIDATION_FAILED": "Données invalides."
   }
 }
