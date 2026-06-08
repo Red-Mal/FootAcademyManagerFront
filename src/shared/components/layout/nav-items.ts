@@ -13,7 +13,8 @@ export const NAV_ITEMS: NavItem[] = [
   { to: '/teams', labelKey: 'nav.teams', icon: ShieldCheck, roles: ['ADMIN', 'COACH'] },
   { to: '/players', labelKey: 'nav.players', icon: Users, roles: ['ADMIN', 'COACH'] },
   { to: '/coaches', labelKey: 'nav.coaches', icon: UsersRound, roles: ['ADMIN'] },
-  { to: '/planning', labelKey: 'nav.planning', icon: CalendarDays },
+  { to: '/sessions', labelKey: 'nav.sessions', icon: CalendarDays, roles: ['ADMIN', 'COACH'] },
+  { to: '/me/schedule', labelKey: 'nav.mySchedule', icon: CalendarDays, roles: ['PLAYER'] },
   { to: '/profile', labelKey: 'nav.profile', icon: User },
 ]
 

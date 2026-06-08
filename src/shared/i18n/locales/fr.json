@@ -9,7 +9,8 @@
     "coaches": "Entraîneurs",
     "sessions": "Séances",
     "planning": "Planning",
-    "profile": "Mon profil"
+    "profile": "Mon profil",
+    "mySchedule": "Mon planning"
   },
   "auth": {
     "login": {
@@ -281,6 +282,77 @@
       "changeCoach": "Impossible de changer le coach de l'équipe."
     }
   },
+  "sessions": {
+    "title": "Séances",
+    "new": "Nouvelle séance",
+    "created": "Séance créée.",
+    "updated": "Séance mise à jour.",
+    "deleted": "Séance supprimée.",
+    "fields": {
+      "team": "Équipe",
+      "startDateTime": "Début",
+      "endDateTime": "Fin",
+      "location": "Lieu",
+      "notes": "Notes"
+    },
+    "views": {
+      "list": "Liste",
+      "calendar": "Calendrier"
+    },
+    "filters": {
+      "allTeams": "Toutes les équipes",
+      "from": "Du",
+      "to": "Au"
+    },
+    "empty": {
+      "title": "Aucune séance",
+      "description": "Aucune séance ne correspond à ces critères."
+    },
+    "deleteConfirm": {
+      "title": "Supprimer cette séance ?",
+      "description": "Cette action est irréversible."
+    },
+    "detail": {
+      "backToList": "Retour à la liste",
+      "notFound": "Séance introuvable"
+    },
+    "form": {
+      "createTitle": "Nouvelle séance",
+      "editTitle": "Modifier la séance",
+      "selectTeam": "Sélectionner une équipe",
+      "noEligibleTeam": "Aucune équipe disponible.",
+      "submitCreate": "Créer la séance",
+      "submitEdit": "Enregistrer",
+      "submitting": "Enregistrement..."
+    },
+    "errors": {
+      "create": "Impossible de créer la séance.",
+      "update": "Impossible de modifier la séance.",
+      "delete": "Impossible de supprimer la séance.",
+      "overlapTitle": "Conflit de planning",
+      "viewConflict": "Voir la séance en conflit"
+    },
+    "calendar": {
+      "date": "Date",
+      "time": "Heure",
+      "event": "Séance",
+      "allDay": "Journée entière",
+      "week": "Semaine",
+      "day": "Jour",
+      "month": "Mois",
+      "previous": "Précédent",
+      "next": "Suivant",
+      "today": "Aujourd'hui",
+      "agenda": "Agenda",
+      "noEvents": "Aucune séance sur cette période.",
+      "showMore_one": "+ {{count}} de plus",
+      "showMore_other": "+ {{count}} de plus"
+    },
+    "mySchedule": {
+      "title": "Mon planning",
+      "description": "Vos prochaines séances d'entraînement."
+    }
+  },
   "apiErrors": {
     "PLAYER_NOT_FOUND": "Joueur introuvable.",
     "COACH_NOT_FOUND": "Coach introuvable.",
@@ -290,6 +362,13 @@
     "PLAYER_CATEGORY_MISMATCH": "Ce joueur n'appartient pas à la catégorie de l'équipe.",
     "PLAYER_NOT_IN_TEAM": "Ce joueur ne fait pas partie de cette équipe.",
     "TEAM_NOT_FOUND": "Équipe introuvable.",
-    "VALIDATION_FAILED": "Données invalides."
+    "VALIDATION_FAILED": "Données invalides.",
+    "SESSION_OVERLAP": "Conflit de planning : une séance existe déjà sur ce créneau pour cette équipe.",
+    "SESSION_INVALID_DATES": "La date de fin doit être postérieure à la date de début.",
+    "SESSION_TOO_SHORT": "Une séance doit durer au minimum 15 minutes.",
+    "SESSION_TOO_LONG": "Une séance ne peut pas durer plus de 6 heures.",
+    "PAST_SESSION_CREATION": "Impossible de planifier une séance dans le passé.",
+    "INVALID_DATE_RANGE": "La plage de dates fournie est invalide.",
+    "DATE_RANGE_TOO_LARGE": "La plage de dates demandée est trop large."
   }
 }

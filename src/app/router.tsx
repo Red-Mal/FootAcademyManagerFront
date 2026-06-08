@@ -20,6 +20,11 @@ import { TeamDetailPage } from '@/features/teams/pages/TeamDetailPage'
 import { TeamCreatePage } from '@/features/teams/pages/TeamCreatePage'
 import { TeamEditPage } from '@/features/teams/pages/TeamEditPage'
 import { MyTeamPage } from '@/features/teams/pages/MyTeamPage'
+import { SessionsListPage } from '@/features/sessions/pages/SessionsListPage'
+import { SessionDetailPage } from '@/features/sessions/pages/SessionDetailPage'
+import { SessionCreatePage } from '@/features/sessions/pages/SessionCreatePage'
+import { SessionEditPage } from '@/features/sessions/pages/SessionEditPage'
+import { MySchedulePage } from '@/features/sessions/pages/MySchedulePage'
 
 export const router = createBrowserRouter([
   {
@@ -46,6 +51,9 @@ export const router = createBrowserRouter([
               { path: 'players/:id', element: <PlayerDetailPage /> },
               { path: 'coaches', element: <CoachesListPage /> },
               { path: 'coaches/:id', element: <CoachDetailPage /> },
+              { path: 'sessions', element: <SessionsListPage /> },
+              { path: 'sessions/new', element: <SessionCreatePage /> },
+              { path: 'sessions/:id/edit', element: <SessionEditPage /> },
             ],
           },
           {
@@ -60,13 +68,17 @@ export const router = createBrowserRouter([
             ],
           },
           {
+            element: <RoleRoute roles={['ADMIN', 'COACH', 'PLAYER']} />,
+            children: [{ path: 'sessions/:id', element: <SessionDetailPage /> }],
+          },
+          {
             element: <RoleRoute roles={['PLAYER']} />,
             children: [
               { path: 'me', element: <MyProfilePage /> },
               { path: 'me/team', element: <MyTeamPage /> },
+              { path: 'me/schedule', element: <MySchedulePage /> },
             ],
           },
-          { path: 'planning', element: <div>Planning (étape 10)</div> },
           { path: 'profile', element: <div>Mon profil (étape 10)</div> },
         ],
       },
