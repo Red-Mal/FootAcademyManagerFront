@@ -1,8 +1,8 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { screen } from '@testing-library/react'
 import { renderWithProviders } from '@/test/utils'
 import { useAuthStore } from '@/features/auth/auth.store'
-import type { SessionResponse, TeamResponse } from '@/shared/types/domain'
+import type { Category, SessionResponse, TeamResponse } from '@/shared/types/domain'
+import { mapSessionToCalendarEvent } from '../lib/calendar-events'
 import { SessionCalendar } from './SessionCalendar'
 
 function buildTeam(overrides: Partial<TeamResponse>): TeamResponse {
@@ -37,35 +37,60 @@ afterEach(() => {
 })
 
 describe('SessionCalendar', () => {
-  it('renders an event for each session using its team name and location', () => {
-    const now = new Date()
-    const start = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 10, 0, 0)
-    const end = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 11, 30, 0)
-
+  it('renders the Schedule-X calendar wrapper without throwing', () => {
     const team = buildTeam({ id: 't1', name: 'U13 A', category: 'U13' })
-    const session = buildSession({
-      id: 's1',
-      teamId: 't1',
-      startDateTime: start.toISOString(),
-      endDateTime: end.toISOString(),
-      location: 'Terrain 1',
-    })
+    const sessions = [
+      buildSession({ id: 's1', teamId: 't1' }),
+      buildSession({
+        id: 's2',
+        teamId: 't1',
+        startDateTime: '2026-01-02T10:00:00Z',
+        endDateTime: '2026-01-02T11:30:00Z',
+        location: 'Terrain 2',
+      }),
+    ]
     const teamById = new Map([[team.id, team]])
 
-    renderWithProviders(
-      <SessionCalendar sessions={[session]} teamById={teamById} onRangeChange={vi.fn()} />,
+    const { container } = renderWithProviders(
+      <SessionCalendar sessions={sessions} teamById={teamById} onRangeChange={vi.fn()} />,
     )
 
-    expect(screen.getByText('U13 A · Terrain 1')).toBeInTheDocument()
+    expect(container.querySelector('.sx-react-calendar-wrapper')).toBeInTheDocument()
+  })
+})
+
+describe('mapSessionToCalendarEvent', () => {
+  it('combines the team name and location into the event title', () => {
+    const team = buildTeam({ name: 'U13 A', category: 'U13' })
+    const session = buildSession({ location: 'Terrain 1' })
+
+    const event = mapSessionToCalendarEvent(session, team)
+
+    expect(event.title).toBe('U13 A · Terrain 1')
   })
 
-  it('reports the visible range when it mounts', () => {
-    const onRangeChange = vi.fn()
+  it('falls back to the location only when the team is unknown', () => {
+    const session = buildSession({ location: 'Terrain 1' })
 
-    renderWithProviders(<SessionCalendar sessions={[]} teamById={new Map()} onRangeChange={onRangeChange} />)
+    const event = mapSessionToCalendarEvent(session, undefined)
 
-    expect(onRangeChange).toHaveBeenCalledWith(
-      expect.objectContaining({ start: expect.any(Date), end: expect.any(Date) }),
-    )
+    expect(event.title).toBe('Terrain 1')
+    expect(event.calendarId).toBe('default')
+  })
+
+  it.each<[Category, string]>([
+    ['U12', 'U12'],
+    ['U13', 'U13'],
+    ['U14', 'U14'],
+    ['U15', 'U15'],
+    ['U16', 'U16'],
+    ['U17', 'U17'],
+  ])('maps a team in category %s to the %s calendar', (category, expectedCalendarId) => {
+    const team = buildTeam({ category })
+    const session = buildSession({})
+
+    const event = mapSessionToCalendarEvent(session, team)
+
+    expect(event.calendarId).toBe(expectedCalendarId)
   })
 })

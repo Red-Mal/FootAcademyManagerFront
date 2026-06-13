@@ -27,7 +27,7 @@ export function SessionsListPage() {
           from: calendarRange?.start.toISOString(),
           to: calendarRange?.end.toISOString(),
           page: 0,
-          size: 200,
+          size: 100,
         }
       : {
           teamId: filters.teamId,

@@ -25,7 +25,7 @@ export function MySchedulePage() {
 
   const range: SessionRangeFilters =
     view === 'calendar' && calendarRange
-      ? { from: calendarRange.start.toISOString(), to: calendarRange.end.toISOString(), size: 200 }
+      ? { from: calendarRange.start.toISOString(), to: calendarRange.end.toISOString(), size: 100 }
       : { ...defaultRange, size: DEFAULT_PAGE_SIZE }
 
   const { data, isLoading, isError, error, refetch } = useMySessions(range)
