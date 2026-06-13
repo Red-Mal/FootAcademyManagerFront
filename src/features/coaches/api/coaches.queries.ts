@@ -2,11 +2,12 @@ import { useQuery } from '@tanstack/react-query'
 import { coachesApi, type CoachListFilters } from './coaches.api'
 import { coachKeys } from './coaches.keys'
 
-export function useCoachesList(filters: CoachListFilters) {
+export function useCoachesList(filters: CoachListFilters, options?: { enabled?: boolean }) {
   return useQuery({
     queryKey: coachKeys.list(filters),
     queryFn: () => coachesApi.list(filters),
     placeholderData: (prev) => prev, // évite le flash blanc en pagination/filtres
+    enabled: options?.enabled,
   })
 }
 
