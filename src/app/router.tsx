@@ -4,6 +4,7 @@ import { ProtectedRoute } from '@/shared/routes/ProtectedRoute'
 import { RoleRoute } from '@/shared/routes/RoleRoute'
 import { LoginPage } from '@/pages/LoginPage'
 import { DashboardPage } from '@/pages/DashboardPage'
+import { ProfilePage } from '@/pages/ProfilePage'
 import { NotFoundPage } from '@/pages/NotFoundPage'
 import { ForbiddenPage } from '@/pages/ForbiddenPage'
 import { PlayersListPage } from '@/features/players/pages/PlayersListPage'
@@ -79,7 +80,7 @@ export const router = createBrowserRouter([
               { path: 'me/schedule', element: <MySchedulePage /> },
             ],
           },
-          { path: 'profile', element: <div>Mon profil (étape 10)</div> },
+          { path: 'profile', element: <ProfilePage /> },
         ],
       },
     ],

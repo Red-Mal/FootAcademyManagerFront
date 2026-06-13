@@ -370,5 +370,15 @@
     "PAST_SESSION_CREATION": "Impossible de planifier une séance dans le passé.",
     "INVALID_DATE_RANGE": "La plage de dates fournie est invalide.",
     "DATE_RANGE_TOO_LARGE": "La plage de dates demandée est trop large."
+  },
+  "profile": {
+    "title": "Mon profil",
+    "username": "Nom d'utilisateur",
+    "roles": {
+      "ADMIN": "Administrateur",
+      "COACH": "Entraîneur",
+      "PLAYER": "Joueur"
+    },
+    "viewFullProfile": "Voir ma fiche complète"
   }
 }
