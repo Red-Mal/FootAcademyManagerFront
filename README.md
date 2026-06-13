@@ -44,6 +44,24 @@ Voir `.env.example`. Les fichiers `.env.development` et `.env.production`
 définissent les valeurs par défaut pour chaque mode (`VITE_API_BASE_URL`,
 `VITE_APP_NAME`).
 
+## Déploiement Railway
+
+L'application est déployée comme un service Railway séparé du backend, via le
+`Dockerfile` (multi-stage : build Vite, puis nginx pour servir les fichiers
+statiques avec fallback SPA sur `index.html`).
+
+Les variables `VITE_*` sont intégrées au bundle **au moment du build** : il
+faut donc les fournir en tant que build args Docker, pas en variables
+d'environnement runtime.
+
+| Build arg | Description |
+|---|---|
+| `VITE_API_BASE_URL` | URL complète de l'API backend déployée, ex. `https://academy-backend.up.railway.app/api` |
+| `VITE_APP_NAME` | `CRN Académie` |
+
+Sur le backend, `CORS_ALLOWED_ORIGINS` doit inclure l'URL publique de ce
+service frontend.
+
 ## Scripts
 
 | Commande               | Description                                     |
