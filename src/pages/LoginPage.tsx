@@ -28,6 +28,7 @@ import { getErrorMessage } from '@/shared/i18n/error-messages'
 import { useAuthStore } from '@/features/auth/auth.store'
 import type { LoginResponse } from '@/shared/types/domain'
 import env from '@/env'
+import crnLogo from '@/assets/crn-logo.jpg'
 
 const loginSchema = z.object({
   username: z.string().min(1, 'auth.login.username'),
@@ -75,8 +76,14 @@ export function LoginPage() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-muted/30 px-4">
-      <Card className="w-full max-w-sm">
+    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-muted/30 px-4">
+      <img
+        src={crnLogo}
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none absolute left-1/2 top-1/2 h-[140vmin] w-[140vmin] -translate-x-1/2 -translate-y-1/2 object-contain opacity-10"
+      />
+      <Card className="relative w-full max-w-sm">
         <CardHeader>
           <CardTitle>{t('auth.login.title')}</CardTitle>
           <CardDescription>{t('auth.login.subtitle')}</CardDescription>

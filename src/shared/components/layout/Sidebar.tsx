@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { cn } from '@/shared/lib/cn'
 import { navItemsForRole } from '@/shared/components/layout/nav-items'
 import { useAuthStore } from '@/features/auth/auth.store'
+import crnLogo from '@/assets/crn-logo.jpg'
 import env from '@/env'
 
 export function Sidebar() {
@@ -12,7 +13,8 @@ export function Sidebar() {
 
   return (
     <aside className="flex w-64 shrink-0 flex-col border-r bg-card">
-      <div className="flex h-16 items-center border-b px-6">
+      <div className="flex h-16 items-center gap-2 border-b px-6">
+        <img src={crnLogo} alt={env.APP_NAME} className="h-9 w-9 object-contain" />
         <span className="text-lg font-semibold">{env.APP_NAME}</span>
       </div>
       <nav className="flex-1 space-y-1 p-4">

@@ -12,6 +12,7 @@ import {
   DropdownMenuTrigger,
 } from '@/shared/components/ui/dropdown-menu'
 import { useAuthStore } from '@/features/auth/auth.store'
+import crnLogo from '@/assets/crn-logo.jpg'
 import env from '@/env'
 
 function initials(name: string | undefined): string {
@@ -37,7 +38,10 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b bg-background/95 px-4 backdrop-blur supports-[backdrop-filter]:bg-background/60 md:px-6">
-      <span className="text-base font-semibold md:hidden">{env.APP_NAME}</span>
+      <div className="flex items-center gap-2 md:hidden">
+        <img src={crnLogo} alt={env.APP_NAME} className="h-8 w-8 object-contain" />
+        <span className="text-base font-semibold">{env.APP_NAME}</span>
+      </div>
       <div className="ml-auto">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>

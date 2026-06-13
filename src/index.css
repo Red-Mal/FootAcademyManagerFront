@@ -13,8 +13,8 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 357 86% 48%;
+    --primary-foreground: 0 0% 100%;
 
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
@@ -25,7 +25,7 @@
     --accent: 210 40% 96.1%;
     --accent-foreground: 222.2 47.4% 11.2%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 14 88% 55%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 214.3 31.8% 91.4%;
@@ -55,8 +55,8 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 357 80% 58%;
+    --primary-foreground: 0 0% 100%;
 
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
@@ -67,7 +67,7 @@
     --accent: 217.2 32.6% 17.5%;
     --accent-foreground: 210 40% 98%;
 
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 14 75% 45%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 217.2 32.6% 17.5%;
@@ -88,4 +88,32 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Calendrier des séances (Schedule-X) : alignement avec le thème shadcn et mise en page responsive */
+.sx-react-calendar-wrapper {
+  width: 100%;
+  height: 600px;
+
+  --sx-color-primary: hsl(var(--primary));
+  --sx-color-on-primary: hsl(var(--primary-foreground));
+  --sx-color-primary-container: hsl(var(--secondary));
+  --sx-color-on-primary-container: hsl(var(--secondary-foreground));
+  --sx-rounding-small: var(--radius);
+  --sx-rounding-extra-small: calc(var(--radius) - 4px);
+}
+
+@media (max-width: 768px) {
+  .sx-react-calendar-wrapper {
+    height: 70vh;
+  }
+}
+
+.dark .sx-react-calendar-wrapper {
+  --sx-color-surface: hsl(var(--card));
+  --sx-color-on-surface: hsl(var(--card-foreground));
+  --sx-color-background: hsl(var(--background));
+  --sx-color-on-background: hsl(var(--foreground));
+  --sx-color-outline: hsl(var(--border));
+  --sx-color-outline-variant: hsl(var(--border));
 }

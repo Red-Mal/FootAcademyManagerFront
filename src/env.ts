@@ -1,6 +1,6 @@
 const env = {
   API_BASE_URL: import.meta.env.VITE_API_BASE_URL ?? '',
-  APP_NAME: import.meta.env.VITE_APP_NAME ?? 'Académie',
+  APP_NAME: import.meta.env.VITE_APP_NAME ?? 'CRN Académie',
   IS_DEV: import.meta.env.DEV,
 }
 
