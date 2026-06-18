@@ -4,6 +4,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { queryClient } from '@/app/query-client'
 import { Toaster } from '@/shared/components/ui/sonner'
 import { ErrorBoundary } from '@/shared/components/feedback/ErrorBoundary'
+import { ReloadPrompt } from '@/shared/components/feedback/ReloadPrompt'
 import '@/shared/i18n'
 
 interface ProvidersProps {
@@ -16,6 +17,7 @@ export function Providers({ children }: ProvidersProps) {
       <QueryClientProvider client={queryClient}>
         {children}
         <Toaster richColors position="top-right" />
+        <ReloadPrompt />
         {import.meta.env.DEV && <ReactQueryDevtools initialIsOpen={false} />}
       </QueryClientProvider>
     </ErrorBoundary>
