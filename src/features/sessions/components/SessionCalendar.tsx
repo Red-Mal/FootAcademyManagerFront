@@ -3,9 +3,10 @@ import '@schedule-x/theme-default/dist/index.css'
 import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useCalendarApp, ScheduleXCalendar } from '@schedule-x/react'
-import { createViewMonthGrid, createViewWeek } from '@schedule-x/calendar'
+import { createViewDay, createViewMonthGrid, createViewWeek } from '@schedule-x/calendar'
 import { createEventsServicePlugin } from '@schedule-x/events-service'
 import { useCurrentUser } from '@/shared/hooks/useCurrentUser'
+import { useIsMobile } from '@/shared/hooks/useIsMobile'
 import type { SessionResponse, TeamResponse } from '@/shared/types/domain'
 import { fromScheduleXString, parseRangeEnd, parseRangeStart } from '../lib/calendar-dates'
 import {
@@ -27,10 +28,9 @@ interface SessionCalendarProps {
   defaultView?: 'week' | 'month'
 }
 
-// Hauteur de la grille semaine : 60px par heure sur 24h, pour des créneaux lisibles.
-// La grille devient alors plus haute que le wrapper visible (600px), qui défile verticalement.
-const WEEK_GRID_HOUR_HEIGHT = 60
-const WEEK_GRID_HEIGHT = WEEK_GRID_HOUR_HEIGHT * 24
+const DESKTOP_HOUR_HEIGHT = 60
+const MOBILE_HOUR_HEIGHT = 40
+const GRID_HOURS = 24
 const DEFAULT_SCROLL_HOUR = 7
 
 export function SessionCalendar({
@@ -45,7 +45,13 @@ export function SessionCalendar({
   const navigate = useNavigate()
   const containerRef = useRef<HTMLDivElement>(null)
   const { data: currentUser } = useCurrentUser()
+  const isMobile = useIsMobile()
   const canCreate = allowCreate ?? currentUser?.role === 'ADMIN'
+
+  // Computed once at mount from isMobile — useCalendarApp only reads config on creation.
+  const hourHeight = isMobile ? MOBILE_HOUR_HEIGHT : DESKTOP_HOUR_HEIGHT
+  const gridHeight = hourHeight * GRID_HOURS
+  const activeView = isMobile ? 'day' : defaultView === 'month' ? 'month-grid' : 'week'
 
   // useCalendarApp ne crée le calendrier qu'une seule fois (au montage) : la config et les
   // callbacks passés à useCalendarApp sont donc figés sur leur première valeur. On passe par
@@ -68,10 +74,10 @@ export function SessionCalendar({
 
   const calendar = useCalendarApp(
     {
-      views: [createViewWeek(), createViewMonthGrid()],
-      defaultView: defaultView === 'month' ? 'month-grid' : 'week',
+      views: [createViewDay(), createViewWeek(), createViewMonthGrid()],
+      defaultView: activeView,
       locale: 'fr-FR',
-      weekOptions: { gridHeight: WEEK_GRID_HEIGHT },
+      weekOptions: { gridHeight },
       calendars: CALENDARS,
       callbacks: {
         onRangeUpdate(range) {
@@ -101,7 +107,7 @@ export function SessionCalendar({
 
   // Émet le range initial une seule fois au montage (cf. computeInitialRange).
   useEffect(() => {
-    onRangeChangeRef.current(computeInitialRange(defaultView, new Date()))
+    onRangeChangeRef.current(computeInitialRange(activeView === 'month-grid' ? 'month' : 'week', new Date()))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -110,17 +116,17 @@ export function SessionCalendar({
     eventsService.set(events)
   }, [sessions, teamById, eventsService])
 
-  // Positionne le défilement de la grille semaine sur une heure de la journée plutôt que minuit.
+  // Positionne le défilement de la grille sur une heure de la journée plutôt que minuit.
   // Le calendrier rend son contenu après le montage : on attend la frame suivante avant de défiler.
   useEffect(() => {
     const timeout = setTimeout(() => {
       const viewContainer = containerRef.current?.querySelector<HTMLElement>('.sx__view-container')
       if (viewContainer) {
-        viewContainer.scrollTop = (DEFAULT_SCROLL_HOUR / 24) * WEEK_GRID_HEIGHT
+        viewContainer.scrollTop = (DEFAULT_SCROLL_HOUR / GRID_HOURS) * gridHeight
       }
     }, 100)
     return () => clearTimeout(timeout)
-  }, [])
+  }, [gridHeight])
 
   return (
     <div className="rounded-lg border bg-card p-2" ref={containerRef}>

@@ -105,7 +105,8 @@
 
 @media (max-width: 768px) {
   .sx-react-calendar-wrapper {
-    height: 70vh;
+    /* 64px header + 80px bottom nav clearance + 1.5rem page top padding */
+    height: calc(100svh - 11rem);
   }
 }
 
